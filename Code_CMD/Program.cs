@@ -14,7 +14,7 @@ namespace Code_CMD
     {
         static void Main(string[] args)
         {
-            
+
 
             Console.WriteLine("Добро пожаловать в программу");
             string Name = ProverkaString("Имя");
@@ -23,7 +23,12 @@ namespace Code_CMD
             string Gender = gender();
             Console.ReadLine();
 
+
+            User tom1 = new User(Name);
             User tom = new User(Name, Height, Weight, Gender);
+
+
+
 
             Console.WriteLine($"Имя { tom.name }  Рост {tom.height} Вес {tom.weight} Пол {tom.gender}");
             Console.ReadLine();
@@ -95,29 +100,31 @@ namespace Code_CMD
 
 
 
-            List<User> user = new List<User>() {tom };
+            List<User> user = new List<User>();
+            List<User> user1 = new List<User>();
 
-          int ass;
+            user.Insert(0, tom);
+            user.Add(tom1);
 
-          
+ 
 
-            SaveUser(tom);
+            Console.ReadLine();
 
-            
-            
 
-        void SaveUser(User user)
+            foreach (User p in user1)
             {
-                var formatter = new BinaryFormatter();
-                using (var fs = new FileStream("Users.dat", FileMode.OpenOrCreate))
-                {
-                    formatter.Serialize(fs, user);
-                }
-
-               
-
-
+                Console.WriteLine(p.name);
             }
+
+            Console.ReadLine();
+
+
+
+
+
+           
+
+            
         }
     }
 }
