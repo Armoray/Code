@@ -8,7 +8,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Code_CMD", "Code_CMD\Code_C
 		{E71756CC-F8EF-4498-A936-B0B8C40DC2EB} = {E71756CC-F8EF-4498-A936-B0B8C40DC2EB}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Code_L", "Code_L\Code_L.csproj", "{E71756CC-F8EF-4498-A936-B0B8C40DC2EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Code_L", "Code_L\Code_L.csproj", "{E71756CC-F8EF-4498-A936-B0B8C40DC2EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forms", "Forms\Forms.csproj", "{F2B6843D-554B-4347-8B76-A94AA9FC1E46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 		{E71756CC-F8EF-4498-A936-B0B8C40DC2EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E71756CC-F8EF-4498-A936-B0B8C40DC2EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E71756CC-F8EF-4498-A936-B0B8C40DC2EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2B6843D-554B-4347-8B76-A94AA9FC1E46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2B6843D-554B-4347-8B76-A94AA9FC1E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2B6843D-554B-4347-8B76-A94AA9FC1E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2B6843D-554B-4347-8B76-A94AA9FC1E46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
