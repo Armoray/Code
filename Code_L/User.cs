@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Code_L
-{
+{   [Serializable]
     public class User
     {
 
@@ -29,7 +29,10 @@ namespace Code_L
             name = Name;
         }
 
-
+        public override string ToString()
+        {
+            return name + " " + height + " " + weight + " " + gender;
+        }
 
     }
 }

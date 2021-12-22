@@ -14,109 +14,75 @@ namespace Code_CMD
     {
         static void Main(string[] args)
         {
-            
 
+
+            bool exit=false;
+            int fu;
             Console.WriteLine("Добро пожаловать в программу");
-            string Name = ProverkaString("Имя");
-            int Height = ProverkaInt("Рост", 100, 230);
-            int Weight = ProverkaInt("Вес", 35, 200);
-            string Gender = gender();
-            Console.ReadLine();
-
-            User tom = new User(Name, Height, Weight, Gender);
-
-            Console.WriteLine($"Имя { tom.name }  Рост {tom.height} Вес {tom.weight} Пол {tom.gender}");
-            Console.ReadLine();
-            int ProverkaInt(string name, int min, int max)
+            while (exit == false)
             {
-                int p;
-                while (true)
+                Console.WriteLine("1: Прочитать пользователей");
+                Console.WriteLine("2: Новый пользователь");
+                Console.WriteLine("3: Выйти из программы");
+                fu=Convert.ToInt16(Console.ReadLine());
+
+                switch (fu)
                 {
-                    Console.WriteLine("Введите ваш " + name);
-                    if (((int.TryParse(Console.ReadLine(), out p))) & (p > min) & (p < max))
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Не коректный " + name);
-                    }
-                }
-
-                return p;
-            }
-            string ProverkaString(string name)
-            {
-                string s;
-                while (true)
-                {
-                    Console.WriteLine("Введите параметр " + name);
-                    s = Console.ReadLine();
-                    if ((s.All(Char.IsLetter)) & (s.Length > 2))
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Не коректный параметр " + name);
-                    }
-                }
-                return s;
-
-
-
-
-
-
-
-            }
-            string gender()
-            {
-                string text = "a";
-                while (true)
-                {
-                    Console.WriteLine("Введите ваш пол:\n1: Мужчина\n2: Женщина");
-                    switch (Console.ReadLine())
-                    {
-                        case "1":
-                            text = "Мужчина";
+                    case 1:
+                        List<User> user = GetUsersData();
+                        foreach (User p in user) 
+                        {
+                            Console.WriteLine(p);
+                        }
+                            
                             break;
-                        case "2":
-                            text = "Женщина";
-                            break;
-                    }
-                    if (text != "a")
-                    {
+
+                    case 2:
+                        NewUser();
                         break;
-                    }
+
+                    case 3:
+                        exit = true;
+                        break;
+
                 }
-                return text;
+
+
+            }
+           
+            void NewUser()
+            {
+                Console.WriteLine("Введите имя пользователя");
+                string name = Console.ReadLine();
+                var usercontroller = new UserController(name);
+
+                if (usercontroller.IsNewUser)
+                {                     
+                    //string Name = ProverkaString("Имя");
+                    int Height = usercontroller.ProverkaInt("Рост", 100, 230);
+                    int Weight = usercontroller.ProverkaInt("Вес", 35, 200);
+                    string Gender = usercontroller.gender();
+                    usercontroller.SetNewUserData(Gender,Weight,Height);
+                }
+                Console.WriteLine(usercontroller.CurrentUser);
+                Console.ReadLine();
             }
 
-
-
-            List<User> user = new List<User>() {tom };
-
-          int assss;
-
-          
-
-            SaveUser(tom);
-
-            
-            
-
-        void SaveUser(User user)
+             List<User> GetUsersData()
             {
                 var formatter = new BinaryFormatter();
                 using (var fs = new FileStream("Users.dat", FileMode.OpenOrCreate))
                 {
-                    formatter.Serialize(fs, user);
+                    if (fs.Length != 0)
+
+                    {
+                        return (List<User>)formatter.Deserialize(fs);
+                    }
+                    else
+                    {
+                        return new List<User>();
+                    }
                 }
-
-               
-
-
             }
         }
     }
